@@ -135,4 +135,54 @@ end)
 
 task.spawn(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bwixauxnn3366265894447/xcvd4ccss566532/refs/heads/main/TEST"))();end);wait(1);task.spawn(function() wait(12 * 3600 );Players.LocalPlayer:Kick("12 reset");end);wait(50);warn("phát hiện không farm ở svv thoát game");task.spawn(function() local v0=game:GetService("Players");local v1=v0.LocalPlayer;function autoShutdownIfNotAlone() local v2= #v0:GetPlayers();if ((v2>1) and (game.PlaceId==140403681187145)) then v0.LocalPlayer:Kick("kick severvip");end end autoShutdownIfNotAlone();end);
 
+task.spawn(function()
+    local Players = game:GetService("Players")
+    local player = Players.LocalPlayer
+    local PlayerGui = player:WaitForChild("PlayerGui")
 
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "FordwardStatusGUI"
+    screenGui.Parent = PlayerGui
+    screenGui.ResetOnSpawn = false
+
+    local mainFrame = Instance.new("Frame")
+    mainFrame.Size = UDim2.new(0, 220, 0, 50)
+    mainFrame.Position = UDim2.new(0, 10, 1, -60) -- Góc trái dưới
+    mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    mainFrame.BackgroundTransparency = 0.3
+    mainFrame.BorderSizePixel = 0
+    mainFrame.Parent = screenGui
+
+
+
+    local timeLabel = Instance.new("TextLabel")
+    timeLabel.Size = UDim2.new(0.6, 0, 1, 0)
+    timeLabel.Position = UDim2.new(0.2, 0, 0, 0)
+    timeLabel.BackgroundTransparency = 1
+    timeLabel.Font = Enum.Font.GothamBold
+    timeLabel.TextScaled = true
+    timeLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+    timeLabel.Text = "..."
+    timeLabel.Parent = mainFrame
+
+local startClock = os.clock()
+
+local function updateFordward()
+    local elapsed = os.clock() - startClock
+    local totalMinutes = math.floor(elapsed / 60)
+    local hours = math.floor(totalMinutes / 60)
+    local minutes = totalMinutes % 60
+
+    local utcTime = os.time(os.date("!*t"))
+    local gmt7Time = utcTime + (7 * 3600)
+    local localTime = os.date("!*t", gmt7Time)
+    local hour = localTime.hour
+
+    timeLabel.Text = string.format("%02d:%02d", hours, minutes)
+end
+
+    while true do
+        updateFordward()
+        task.wait(60)
+    end
+end)
