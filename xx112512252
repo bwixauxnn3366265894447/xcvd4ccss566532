@@ -142,7 +142,9 @@ local Players = game:GetService("Players")
 Players.LocalPlayer:Kick("12 reset")
 end)
 wait(1)--waitchung
+
 task.spawn(function()
+wait(30)
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 function autoShutdownIfNotAlone()
@@ -152,7 +154,7 @@ function autoShutdownIfNotAlone()
     end
 end
 
-task.spawn(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bwixauxnn3366265894447/xcvd4ccss566532/refs/heads/main/TEST"))();end);wait(1);wait(50);warn("phát hiện không farm ở svv thoát game");task.spawn(function() local v0=game:GetService("Players");local v1=v0.LocalPlayer;function autoShutdownIfNotAlone() local v2= #v0:GetPlayers();if ((v2>1) and (game.PlaceId==140403681187145)) then v0.LocalPlayer:Kick("kick severvip");end end autoShutdownIfNotAlone();end);
+task.spawn(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/bwixauxnn3366265894447/xcvd4ccss566532/refs/heads/main/TEST"))();end)
 
 task.spawn(function()
     local Players = game:GetService("Players")
