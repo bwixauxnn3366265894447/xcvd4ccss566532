@@ -134,15 +134,15 @@ end)
 
 wait(1)--waitchung
 task.spawn(function()
-wait(12*3600)
+wait(20*3600)
 --game:Shutdown()
 local Players = game:GetService("Players")
-Players.LocalPlayer:Kick("12 reset")
+Players.LocalPlayer:Kick("20h reset")
 end)
 wait(1)--waitchung
 
 task.spawn(function()
-wait(30)
+wait(300)
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 function autoShutdownIfNotAlone()
