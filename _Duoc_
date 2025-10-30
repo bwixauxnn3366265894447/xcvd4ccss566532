@@ -1,13 +1,30 @@
-wait(60)
+task.spawn(function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/2FISH_FARM_COMBO"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/2FISH_FARM_VARRRR"))()
+		--loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/teleport_w1234"))()
+end)
 
-task.spawn(function() wait(10);loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/startGuiUpdater_HALOOWEN"))();end);
-task.spawn(function() wait(10);loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/EVENT_HALOOWEN_HEOPRO_lite"))();end);
-task.spawn(function() 
-  if game.PlaceId == 131952481663528 then	
-    wait(60)	
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/Hallo_check_gems"))() 
-  end 
-end);
+
+wait(60)
+task.spawn(function()
+wait(10)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/startGuiUpdater_HALOOWEN_vin"))()	
+end)
+task.spawn(function()
+wait(10)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/startGuiUpdater_Defau"))()	
+end)
+task.spawn(function()
+wait(10)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/EVENT_HALOOWEN_HEOPRO_lite"))()	
+end)
+
+task.spawn(function()
+	wait(60)
+	if _G.TotalRate > 40000 then
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/Hallo_check_gems_KICK"))()
+	end
+end)
 
 wait(1)--waitchung
 -- Xem item kiếm được / 1h ở góc phải dưới
@@ -140,4 +157,9 @@ end
 
 
 
+end)
+
+task.spawn(function()
+wait(12*3600)
+Players.LocalPlayer:Kick("12h reset")
 end)
