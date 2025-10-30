@@ -4,6 +4,29 @@ task.spawn(function()
 		--loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/teleport_w1234"))()
 end)
 
+if game.PlaceId == 119454325063278 or game.PlaceId == 95635359880599 then
+	return
+end
+task.spawn(function()
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+-- Hàm kiểm tra số người và shutdown nếu cần
+function autoShutdownIfNotAlone()
+    local playerCount = #Players:GetPlayers()
+    if playerCount > 1 and game.PlaceId ~= 8737899170 then
+		Players.LocalPlayer:Kick("kick severvip")
+    end
+end
+
+-- Gọi ngay khi script chạy
+while true do
+	wait(20)
+	autoShutdownIfNotAlone()
+	wait(600)
+end
+
+end)
 
 wait(60)
 task.spawn(function()
