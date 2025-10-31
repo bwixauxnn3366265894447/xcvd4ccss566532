@@ -178,11 +178,18 @@ while true do
 	checkInventory()
 end
 
-
-
 end)
 
 task.spawn(function()
-wait(12*3600)
-Players.LocalPlayer:Kick("12h reset")
+wait(6*3600)
+Players.LocalPlayer:Kick("6h reset")
 end)
+
+
+
+
+
+
+
+
+
