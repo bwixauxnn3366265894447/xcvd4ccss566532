@@ -1,8 +1,4 @@
 task.spawn(function()
-if game.PlaceId ~= 140403681187145 then
-    return
-end
-
 wait(20)
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -111,7 +107,7 @@ local function checkInventory()
 
 		local display
 		if item.id == "Diamond" then
-			display = tostring(math.floor((avgPerHour / 1_000_000) * 100 + 0.5) / 100) .. "M"
+			display = tostring(math.floor((avgPerHour / 1_000_000) * 100 + 0.5) / 100)
 		else
 			display = math.floor(avgPerHour * 100 + 0.5) / 100
 		end
