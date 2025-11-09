@@ -14,7 +14,7 @@ local player = Players.LocalPlayer
 -- Hàm kiểm tra số người và shutdown nếu cần
 function autoShutdownIfNotAlone()
     local playerCount = #Players:GetPlayers()
-    if playerCount > 1 and game.PlaceId ~= 8737899170 then
+    if playerCount > 1 and game.PlaceId ~= 8737899170 and game.PlaceId ~= 131952481663528 then
 		Players.LocalPlayer:Kick("kick severvip")
     end
 end
