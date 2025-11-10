@@ -1,7 +1,7 @@
 task.spawn(function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/2FISH_FARM_COMBO"))()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/2FISH_FARM_VARRRR"))()
-		--loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/teleport_w1234"))()
+		--loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/2FISH_FARM_COMBO"))()
+		--loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/2FISH_FARM_VARRRR"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/teleport_w1234"))()
 end)
 
 if game.PlaceId == 119454325063278 or game.PlaceId == 95635359880599 then
