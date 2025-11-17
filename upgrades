@@ -1,0 +1,550 @@
+repeat task.wait() until game:IsLoaded()
+local LocalPlayer = game:GetService('Players').LocalPlayer
+repeat task.wait() until not LocalPlayer.PlayerGui:FindFirstChild('__INTRO')
+
+repeat
+    wait(2)
+until game:IsLoaded() and
+    game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui") and
+    game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MainLeft") and
+    game:GetService("Players").LocalPlayer.PlayerGui.MainLeft.Left.Currency.Diamonds.Diamonds.Visible == true and
+    not game:GetService("Players").LocalPlayer:FindFirstChild("GUIFX Holder")
+
+-- In ra thông báo khi trò chơi đã được tải hoàn toàn.
+print("[CLIENT] Loaded Game")
+
+task.spawn(function()
+	wait(1)
+	_G.FPSvvv = 15
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/SET_5FPSp"))()
+end)
+
+--setfpscap(30)
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+
+local player = Players.LocalPlayer
+
+-- 📦 Remote
+local Upgrades_Purchase = ReplicatedStorage.Network:WaitForChild("Upgrades_Purchase")
+
+-- 🧭 Teleport
+local function runSequence(teleportPositions)
+	for _, pos in ipairs(teleportPositions) do
+		local character = player.Character or player.CharacterAdded:Wait()
+		local rootPart = character:WaitForChild("HumanoidRootPart")
+		rootPart.CFrame = CFrame.new(pos)
+	end
+end
+
+local function update_map(loai_update, map_co_update)
+	Upgrades_Purchase:InvokeServer(loai_update, map_co_update)
+end
+
+local function BAM_E_UPDATE()
+	
+    VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game)
+    task.wait(0.1)
+    VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
+	task.wait(0.5)
+end
+
+local function STOP_FULL_UP()
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")	
+local GuildCastle_UnlockGate = ReplicatedStorage.Network.GuildCastle_UnlockGate
+GuildCastle_UnlockGate:InvokeServer()
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local Save = require(ReplicatedStorage.Library.Client.Save)
+
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Các chỉ số và cấp tối đa cần đạt
+local maxUpgrades = {
+    Magnet = 7,
+    Drops = 7,
+    ["Pet Speed"] = 7,
+    ["Tap Damage"] = 8,
+    Diamonds = 9,
+    Luck = 7,
+    Ultimates = 2,
+    Walkspeed = 2,
+    Coins = 8,
+    ["Pet Damage"] = 7,
+}
+
+local current = Save.Get().UpgradesOwned or {}
+local missingUpgrade = false
+
+for name, maxLevel in pairs(maxUpgrades) do
+    local data = current[name]
+    local highest = 0
+    if data then
+        for _, level in pairs(data) do
+            if level > highest then
+                highest = level
+            end
+        end
+    end
+
+    if highest < maxLevel then
+        print("⚠️ Chưa đạt max: " .. name .. " (" .. highest .. "/" .. maxLevel .. ")")
+        missingUpgrade = true
+    end
+end
+
+-- Nếu chưa đạt max, tạo GUI cảnh báo
+if missingUpgrade then
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "UpgradesWarning"
+    screenGui.ResetOnSpawn = false
+    screenGui.Parent = playerGui
+
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Size = UDim2.new(0, 120, 0, 30)
+    textLabel.Position = UDim2.new(0, 10, 0, 10)
+    textLabel.BackgroundColor3 = Color3.new(0.2, 0, 0)
+    textLabel.TextColor3 = Color3.new(1, 0, 0)
+    textLabel.Text = "Upgrades"
+    textLabel.Font = Enum.Font.SourceSansBold
+    textLabel.TextSize = 18
+    textLabel.BorderSizePixel = 0
+    textLabel.Parent = screenGui
+else
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "FULLLLLLL"
+    screenGui.ResetOnSpawn = false
+    screenGui.Parent = playerGui
+
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Size = UDim2.new(0, 120, 0, 30)
+    textLabel.Position = UDim2.new(0, 10, 0, 10)
+	textLabel.BackgroundColor3 = Color3.new(0, 0, 1) -- xanh dương
+    textLabel.TextColor3 = Color3.new(0, 1, 0)
+    textLabel.Text = "Upgrades"
+    textLabel.Font = Enum.Font.SourceSansBold
+    textLabel.TextSize = 18
+    textLabel.BorderSizePixel = 0
+    textLabel.Parent = screenGui
+Players.LocalPlayer:Kick("Full UP")
+
+end
+
+end
+
+-- ⚙️ Thiết lập ban đầu
+
+
+VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.F, false, game)
+task.wait(0.1)
+VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.F, false, game)
+task.wait(0.5)
+
+VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.F, false, game)
+task.wait(0.1)
+VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.F, false, game)
+task.wait(0.5)
+
+STOP_FULL_UP()
+
+if game.PlaceId == 140403681187145 and RunService:IsRunning() then
+
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local PetsFolder = workspace:WaitForChild("__THINGS"):WaitForChild("Pets")
+local Network = ReplicatedStorage:WaitForChild("Network")
+
+ 
+ Network.Pets_ToggleFavoriteMode:FireServer()
+    task.wait(0.5)
+    Network.Pets_SetTeamIndex:FireServer(2)
+    task.wait(0.5)
+
+ 
+	runSequence({Vector3.new(-15484.5, 20, -404.5)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Tap Damage", "Flora Falls")
+ 
+	runSequence({Vector3.new(-14856.5, 20, -408.5)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Drops", "Windmill Point")	
+
+	runSequence({Vector3.new(-14261.3, 20, 193)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+	runSequence({Vector3.new(-14261.3, 20, 193)})
+	task.wait(0.5)
+	update_map("Coins", "Starroot Highlands")
+
+
+	runSequence({Vector3.new(-14679, 20, 505.5)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Pet Speed", "Runestone Bluff")
+
+
+  	runSequence({Vector3.new(-14494, 20, 1288)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Pet Damage", "Scribes Terrace")
+task.wait(0.5)
+ update_map("Pet Damage", "Mirror Tome Path")
+ 
+   	runSequence({Vector3.new(-14220, 20, 1890)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Coins", "Faerie Hex Glade")
+ task.wait(0.5)
+ update_map("Coins", "Bloomcourt Terrace")
+ 
+	-- 🌍 Dịch chuyển đến World3
+	task.wait(3.5)
+	STOP_FULL_UP()
+game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("World3Teleport"):InvokeServer()
+end
+
+if game.PlaceId == 17503543197 and RunService:IsRunning() then
+	task.wait(0.5)
+	
+	runSequence({Vector3.new(-2235.2, 25, -8536)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+	runSequence({Vector3.new(-2235.2, 25, -8536)})
+	task.wait(0.5)
+ update_map("Coins", "Prison Yard")
+
+	runSequence({Vector3.new(-3714.8, 530, -13087.7)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+	runSequence({Vector3.new(-3714.8, 530, -13087.7)})
+	task.wait(0.5)
+ update_map("Pet Damage", "Tiki Island")
+
+	runSequence({Vector3.new(-2997, 205, -22065)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+	runSequence({Vector3.new(-2997, 205, -22065)})
+	task.wait(0.5)
+ update_map("Luck", "Hacker Lab")
+	runSequence({Vector3.new(-2997, 205, -22065)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+	runSequence({Vector3.new(-2997, 205, -22065)})
+	task.wait(0.5)
+ update_map("Luck", "Hacker Lab")
+	
+	
+	runSequence({Vector3.new(1011.6, 23, -14337)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+	runSequence({Vector3.new(1011.6, 23, -14337)})
+	task.wait(0.5)
+ update_map("Tap Damage", "Stone Forts")
+
+	runSequence({Vector3.new(1011, 23, -36338.7)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+	runSequence({Vector3.new(1011, 23, -36338.7)})
+	task.wait(0.5)
+ update_map("Drops", "Kawaii Village")
+
+	runSequence({Vector3.new(1011, 23, -24983.7)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+	runSequence({Vector3.new(1011, 23, -24983.7)})
+	task.wait(0.5)
+ update_map("Diamonds", "Rocky Ridge")
+
+	-- 🌍 Dịch chuyển đến World2
+	task.wait(0.5)
+	STOP_FULL_UP()
+game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("World2Teleport"):InvokeServer()
+end
+
+if game.PlaceId == 16498369169 then
+
+	runSequence({Vector3.new(-9817.5, 20, -416.6)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Tap Damage", "Tech Spawn")
+
+	-- Area 108: Luck
+	runSequence({Vector3.new(-8551, 20, -413)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Luck", "Data Tree Farm")
+
+	-- Area 115: Drops
+	runSequence({Vector3.new(-8806, 20, 302)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Drops", "Cyber Cove")
+
+	-- Area 123: Diamonds
+	runSequence({Vector3.new(-9945, 128.7, 643)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Diamonds", "Forcefield Mine")
+
+	-- Area 128: Ultimate XP
+	runSequence({Vector3.new(-9195, 18, 972)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Ultimates", "Nexus")
+
+	-- Area 134: Pet Speed
+	runSequence({Vector3.new(-8725, 18.4, 1545)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Pet Speed", "Rocky Planet")
+
+	-- Area 141: Coins
+	runSequence({Vector3.new(-9175, 18.5, 2298)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Coins", "Mutated Forest")
+
+	-- Area 148: Pet Damage
+	runSequence({Vector3.new(-10283, 17.8, 2300)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Pet Damage", "UFO Forest")
+
+	-- Area 159: Luck
+	runSequence({Vector3.new(-9753, 17.5, 3016)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Luck", "Mothership Circuit Board")
+
+	-- Area 168: Tap Damage
+	runSequence({Vector3.new(-10953, 18.3, 3313)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Tap Damage", "Cyberpunk Road")
+
+	-- Area 181: Drops
+	runSequence({Vector3.new(-10214, 18.5, 4059)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Drops", "Dark Tech Ruins")
+
+	-- Area 189: Ultimate XP
+	runSequence({Vector3.new(-10785, 18.5, 4636)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Ultimates", "Glitch Forest")
+
+	-- Area 198: Diamonds
+	runSequence({Vector3.new(-11037.4, 17.6, 5778.6)})
+	task.wait(0.5)
+	BAM_E_UPDATE() 
+ update_map("Diamonds", "Void Fracture")
+ 
+
+  STOP_FULL_UP()
+  
+game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("World1Teleport"):InvokeServer() 
+end
+
+if game.PlaceId == 8737899170 then
+    task.wait(0.5)
+
+	runSequence({Vector3.new(438.4, 19.8, -234)})
+	task.wait(0.5)
+	
+ update_map("Walkspeed", "Colorful Forest")
+
+	runSequence({Vector3.new(595.5, 19.8, -238)})
+	task.wait(0.5)
+	
+ update_map("Magnet", "Castle")
+
+	runSequence({Vector3.new(755.1, 20, -237)})
+	task.wait(0.5)
+	
+ update_map("Diamonds", "Green Forest")
+
+	runSequence({Vector3.new(789, 20, 54)})
+	task.wait(0.5)
+	
+ update_map("Walkspeed", "Cherry Blossom")
+
+	runSequence({Vector3.new(468, 20, 55)})
+	task.wait(0.5)
+	
+ update_map("Tap Damage", "Backyard")
+
+	runSequence({Vector3.new(243, 20, 134)})
+	task.wait(0.5)
+	
+ update_map("Diamonds", "Mine")
+
+	runSequence({Vector3.new(441, 20, 237)})
+	task.wait(0.5)
+	
+ update_map("Pet Speed", "Dead Forest")
+
+	runSequence({Vector3.new(756, 20, 233)})
+	task.wait(0.5)
+	
+ update_map("Magnet", "Mushroom Field")
+
+	runSequence({Vector3.new(794, 20, 527)})
+	task.wait(0.5)
+	
+ update_map("Drops", "Crimson Forest")
+
+	runSequence({Vector3.new(465, 20, 530)})
+	task.wait(0.5)
+	
+ update_map("Pet Damage", "Jungle Temple")
+
+	runSequence({Vector3.new(250, 20, 556)})
+	task.wait(0.5)
+	
+ update_map("Diamonds", "Beach")
+
+	runSequence({Vector3.new(439, -30, 751)})
+	task.wait(0.5)
+	
+ update_map("Luck", "Shipwreck")
+
+	runSequence({Vector3.new(873, 20, 753)})
+	task.wait(0.5)
+	
+ update_map("Magnet", "Palm Beach")
+
+	runSequence({Vector3.new(912, 20, 1047)})
+	task.wait(0.5)
+	
+ update_map("Coins", "Pirate Cove")
+
+	runSequence({Vector3.new(600, 20, 1048)})
+	task.wait(0.5)
+	
+ update_map("Tap Damage", "Shanty Town")
+
+	runSequence({Vector3.new(388, 20, 1120)})
+	task.wait(0.5)
+	
+ update_map("Pet Speed", "Fossil Digsite")
+
+	runSequence({Vector3.new(727, 20, 1225)})
+	task.wait(0.5)
+	
+ update_map("Diamonds", "Wild West")
+
+	runSequence({Vector3.new(1151, 20, 1361)})
+	task.wait(0.5)
+	
+ update_map("Pet Damage", "Mountains")
+
+	runSequence({Vector3.new(695, 20, 1600)})
+	task.wait(0.5)
+	
+ update_map("Coins", "Ski Town")
+
+	runSequence({Vector3.new(1178, 20, 1700)})
+	task.wait(0.5)
+	
+ update_map("Drops", "Obsidian Cave")
+
+	runSequence({Vector3.new(1446, 20, 1993)})
+	task.wait(0.5)
+	
+ update_map("Magnet", "Underworld Bridge")
+
+	runSequence({Vector3.new(1189, 20, 2149)})
+	task.wait(0.5)
+	
+ update_map("Luck", "Metal Dojo")
+
+	runSequence({Vector3.new(667, 20, 2148)})
+	task.wait(0.5)
+	
+ update_map("Pet Damage", "Samurai Village")
+
+	runSequence({Vector3.new(349, 20, 2151)})
+	task.wait(0.5)
+	
+ update_map("Tap Damage", "Zen Garden")
+
+	runSequence({Vector3.new(287, 20, 2535)})
+	task.wait(0.5)
+	
+ update_map("Pet Speed", "Fairytale Castle")
+
+	runSequence({Vector3.new(482, 20, 2634)})
+	task.wait(0.5)
+	
+ update_map("Luck", "Fairy Castle")
+
+	runSequence({Vector3.new(798, 20, 2635)})
+	task.wait(0.5)
+	
+ update_map("Coins", "Rainbow River")
+
+	runSequence({Vector3.new(1239, 20, 2766)})
+	task.wait(0.5)
+	
+ update_map("Magnet", "Frost Mountains")
+
+	runSequence({Vector3.new(1152, 20, 3246)})
+	task.wait(0.5)
+	
+ update_map("Diamonds", "Ice Castle")
+
+	runSequence({Vector3.new(828, 20, 3249)})
+	task.wait(0.5)
+	
+ update_map("Drops", "Firefly Cold Forest")
+
+	runSequence({Vector3.new(288, 20, 3631)})
+	task.wait(0.5)
+	
+ update_map("Tap Damage", "Witch Marsh")
+
+	runSequence({Vector3.new(637, 20, 3710)})
+	task.wait(0.5)
+	
+ update_map("Luck", "Haunted Mansion")
+
+	runSequence({Vector3.new(1097, -31, 4002)})
+	task.wait(0.5)
+	
+ update_map("Magnet", "Treasure Dungeon")
+
+	runSequence({Vector3.new(512, 20, 4320)})
+	task.wait(0.5)
+	
+ update_map("Coins", "Gummy Forest")
+
+	runSequence({Vector3.new(-38, 20, 4392)})
+	task.wait(0.5)
+	
+ update_map("Pet Speed", "Carnival")
+
+	runSequence({Vector3.new(-35, 120, 5390)})
+	task.wait(0.5)
+	
+ update_map("Pet Damage", "Cloud Houses")
+
+	runSequence({Vector3.new(-35, 120, 6184)})
+	task.wait(0.5)
+	
+ update_map("Diamonds", "Colorful Clouds")
+
+	runSequence({Vector3.new(530, 26, -272)})
+	
+STOP_FULL_UP()
+game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("World4Teleport"):InvokeServer()
+end
