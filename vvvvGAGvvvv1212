@@ -1,11 +1,16 @@
-local keys = { 
-    "MqyAEjMoLhyDIPsxCQNgbVcOnWXaCUjq", 
-    "AGpyOfCnNFcHCWySgAIURroTXqRLdAQk", 
-	"HRXdUveNUbMgviAZxvWlGvNfmhWgULjY", 
-}
+if name_vps == "GAG_1" or name_vps == "GAG_2" then
+	local keys = { 
+	    "MqyAEjMoLhyDIPsxCQNgbVcOnWXaCUjq", 
+		"HRXdUveNUbMgviAZxvWlGvNfmhWgULjY", 
+	}
+elseif name_vps == "GAG_3" or name_vps == "GAG_4" then
+	local keys = { 
+	    "AGpyOfCnNFcHCWySgAIURroTXqRLdAQk", 
+		"HRXdUveNUbMgviAZxvWlGvNfmhWgULjY", 
+	}
+end
 
 math.randomseed(os.time())
 script_key = keys[math.random(#keys)];
-
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/vingagagagagaga2/GAGAGAGA000999xz/refs/heads/main/config_Marmut"))()
