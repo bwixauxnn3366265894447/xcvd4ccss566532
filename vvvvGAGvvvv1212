@@ -1,10 +1,10 @@
 if name_vps == "GAG_1" or name_vps == "GAG_2" then
-	local keys = { 
+	keys = { 
 	    "MqyAEjMoLhyDIPsxCQNgbVcOnWXaCUjq", 
 		"HRXdUveNUbMgviAZxvWlGvNfmhWgULjY", 
 	}
 elseif name_vps == "GAG_3" or name_vps == "GAG_4" then
-	local keys = { 
+	keys = { 
 	    "AGpyOfCnNFcHCWySgAIURroTXqRLdAQk", 
 		"HRXdUveNUbMgviAZxvWlGvNfmhWgULjY", 
 	}
