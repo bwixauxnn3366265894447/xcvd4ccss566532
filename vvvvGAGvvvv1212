@@ -13,4 +13,12 @@ end
 math.randomseed(os.time())
 script_key = keys[math.random(#keys)];
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/vingagagagagaga2/GAGAGAGA000999xz/refs/heads/main/config_Marmut"))()
+if name_vps == "GAG_2" then 
+
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/vingagagagagaga2/GAGAGAGA000999xz/refs/heads/main/config_Marmut_NEW_NEW"))()
+
+else
+
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/vingagagagagaga2/GAGAGAGA000999xz/refs/heads/main/config_Marmut"))()
+
+end
