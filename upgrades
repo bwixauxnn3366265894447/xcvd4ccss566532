@@ -15,8 +15,9 @@ print("[CLIENT] Loaded Game")
 
 task.spawn(function()
 	wait(1)
-	_G.FPSvvv = 15
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/aztbuirczzxmmcx1zz/9xmin7bszzmiay87zpqla/refs/heads/main/SET_5FPSp"))()
+_G.FPSvvv = 15
+loadstring(game:HttpGet("https://raw.githubusercontent.com/vingagagagagaga2/GAGAGAGA000999xz/refs/heads/main/SET_FPS"))()
+
 end)
 
 --setfpscap(30)
