@@ -1,4 +1,4 @@
-if name_vps == "GAG_1" or name_vps == "GAG_2" then
+if name_vps == "GAG_1" then
 	keys = { 
 	    "MqyAEjMoLhyDIPsxCQNgbVcOnWXaCUjq",
 	}
