@@ -1,11 +1,10 @@
 if name_vps == "GAG_1" then
 	keys = { 
-	    "MqyAEjMoLhyDIPsxCQNgbVcOnWXaCUjq",
+	    "CJquZnAlyjZGSIKTVFdAiWfoGIWMgZII"
 	}
 elseif name_vps == "GAG_3" or name_vps == "GAG_4" then
 	keys = { 
-	    "AGpyOfCnNFcHCWySgAIURroTXqRLdAQk", 
-		"HRXdUveNUbMgviAZxvWlGvNfmhWgULjY", 
+	    "ufUSaEszwWQtoSaQTqdyMnXWKIifjZbh"
 	}
 end
 
