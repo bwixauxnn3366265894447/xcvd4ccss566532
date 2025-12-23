@@ -19,7 +19,7 @@ end)
 wait(5)
 if name_vps == "V5" or name_vps == "V2" or name_vps == "V4" then
 	script_key = "bRnmaCbwFjldngaIuJCspgpAInzHhMDA"; --6/12
-elseif name_vps == "G4" or name_vps == "V3" or name_vps == "V6" or name_vps == "V7" then			
+elseif name_vps == "G3" or name_vps == "V3" or name_vps == "V6" or name_vps == "V7" then			
 	script_key = "TMJgtrhQDanxWCXBffguStSHSkrLUoyf"; --6/12
 elseif  name_vps == "L1" or name_vps == "L3" then
 	script_key = "qzsFmUkkOuAxpzItlGzMwDmukfpqZytm"; --2/12
