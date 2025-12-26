@@ -1,0 +1,113 @@
+task.spawn(function()
+task.spawn(function()
+	if _G.DELTOPBARAPP then
+	    return
+	end
+	_G.DELTOPBARAPP = true
+	local CoreGui = game:GetService("CoreGui")
+	for _, gui in ipairs(CoreGui:GetChildren()) do
+	    if gui.Name == "TopBarApp" and gui.ClassName == "Folder" then
+	        pcall(function()
+	            gui:Destroy()
+	        end)
+	    end
+	end
+end)
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+local Save = require(ReplicatedStorage.Library.Client.Save)
+local function Formatint(int)
+	local Suffix = {"", "k", "M", "B", "T", "Qd", "Qn", "Sx", "Sp", "Oc", "No", "De", "UDe", "DDe"}
+	local Index = 1
+	if int < 999 then return tostring(int) end
+	while int >= 1000 and Index < #Suffix do
+		int /= 1000
+		Index += 1
+	end
+	return string.format("%.2f%s", int, Suffix[Index])
+end
+
+local function FormatTime(seconds)
+	local h = math.floor(seconds / 3600)
+	local m = math.floor((seconds % 3600) / 60)
+	return string.format("%02d:%02d", h, m)
+end
+
+local function updateLabelSize(label)
+	label.Size = UDim2.new(0, label.TextBounds.X + 20, 0, 38)
+end
+local function getDiamonds()
+	local stats = player:FindFirstChild("leaderstats")
+	local d = stats and stats:FindFirstChild("💎 Diamonds")
+	return d and d.Value or 0
+end
+local function startGui()
+	-- Clear old
+	local old = playerGui:FindFirstChild("GuiMerged")
+	if old then old:Destroy() end
+
+	local gui = Instance.new("ScreenGui")
+	gui.Name = "GuiMerged"
+	gui.ResetOnSpawn = false
+	gui.DisplayOrder = 9999
+	gui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+	gui.Parent = playerGui
+
+	local function createRegion(pos, anchor, align)
+		local frame = Instance.new("Frame")
+		frame.BackgroundTransparency = 1
+		frame.Size = UDim2.new(0, 260, 1, 0)
+		frame.Position = pos
+		frame.AnchorPoint = anchor
+		frame.Parent = gui
+
+		local layout = Instance.new("UIListLayout")
+		layout.Padding = UDim.new(0, 4)
+		layout.HorizontalAlignment = align
+		layout.Parent = frame
+		return frame
+	end
+
+	local left   = createRegion(UDim2.new(0, 0, 0, -55), Vector2.new(0,0), Enum.HorizontalAlignment.Left)
+	local center = createRegion(UDim2.new(0.40, 70, 0, -55), Vector2.new(0.5,0), Enum.HorizontalAlignment.Center)
+	local right  = createRegion(UDim2.new(0.85, 0, 0, -55), Vector2.new(1,0), Enum.HorizontalAlignment.Right)
+
+	local function createLabel(name, parent, color)
+		local l = Instance.new("TextLabel")
+		l.Name = name
+		l.Size = UDim2.new(1, 0, 0, 38)
+		l.BackgroundColor3 = color
+		l.TextColor3 = Color3.new(1,1,1)
+		l.Font = Enum.Font.GothamBold
+		l.TextSize = 32
+		l.BorderSizePixel = 0
+		l.TextXAlignment = Enum.TextXAlignment.Center
+		l.AutoLocalize = false
+		l.Text = "..."
+		l.Parent = parent
+		return l
+	end
+
+	local gemsLabel      = createLabel("GemsLabel", left,   Color3.fromRGB(0,102,204))
+	local timeLabel      = createLabel("TimeLabel", center, Color3.fromRGB(0,102,204))
+
+	local startTime = os.time()
+
+	while true do
+		gemsLabel.Text = Formatint(getDiamonds())
+		updateLabelSize(gemsLabel)
+
+		timeLabel.Text = FormatTime(os.time() - startTime)
+		updateLabelSize(timeLabel)
+
+		task.wait(60)
+	end
+end
+
+startGui()
+
+end)
