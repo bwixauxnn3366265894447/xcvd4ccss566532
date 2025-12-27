@@ -30,8 +30,8 @@ elseif name_vps == "V1" or name_vps == "V0" then
 elseif  name_vps == "G2" or name_vps == "V9" then
 	script_key = "nWBVzRVVMiejfecEtJAqSpazDHkegASM"; --17/12
 elseif  name_vps == "M69" or name_vps == "M68" then
-	script_key = "NbVMyArClRPWPWTUWuthcBuAehPJgfqb"; --20-12 +7
+	script_key = "aLrMbBTekzBMSzTsfHRFQZmIVpCgTXtz"; --27-12 +7
 elseif  name_vps == "DM3" or name_vps == "DM2" or name_vps == "DM1" then
-	script_key = "IOdgKMxWqPSgIdZeIGBFAgDixXxQZkMl"; --20-12 +7
+	script_key = "pAxdzsTCnWfUvsZpETlnemjLuWlNAuFP"; --27-12 +7
 end
 
