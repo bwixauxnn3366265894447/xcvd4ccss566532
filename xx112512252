@@ -2,6 +2,121 @@ task.spawn(function()
 wait(30)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/vingagagagagaga2/GAGAGAGA000999xz/refs/heads/main/checkgems"))()
 end)
+task.spawn(function()
 
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+local Client = ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client")
+local SaveModule = require(Client:WaitForChild("Save"))
+
+local previousCounts = {}
+
+-- c?u hình item c?n theo dõi
+local itemsToTrack = {
+	
+	{ id = "Huge Candycane Shake Shark", 		guiName = "Item21", row = 0, col = 0, color = Color3.fromRGB(255, 165, 0) },		-- cam
+	{ id = "Elf Golem", 			guiName = "Item22", row = 0, col = 1, color = Color3.fromRGB(0, 255, 0) },		--xanh lá cây
+	{ id = "Hippomint", 			guiName = "Item23", row = 0, col = 2, color = Color3.fromRGB(255, 0, 0) },				--đỏ
+	{ id = "Candycane Kitsune", 	guiName = "Item24", row = 0, col = 3, color = Color3.fromRGB(255, 165, 0) },		-- cam
+
+}
+
+local function createItemFrame(itemConfig, itemCount)
+	local frameSize = 100
+	local spacing = 10
+	local cols = 2
+	local rows = 2
+
+	local offsetX = (itemConfig.col * (frameSize + spacing)) - ((cols - 1) * (frameSize + spacing) / 2)
+	local offsetY = (itemConfig.row * (frameSize + spacing)) - ((rows - 1) * (frameSize + spacing) / 2) + 80
+
+
+	local screenGui = Instance.new("ScreenGui")
+	screenGui.Name = itemConfig.guiName
+	screenGui.Parent = PlayerGui
+	screenGui.ResetOnSpawn = false
+	screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	local frame = Instance.new("Frame")
+	frame.Name = "ItemFrame"
+	frame.Size = UDim2.new(0, frameSize, 0, frameSize)
+	frame.Position = UDim2.new(0.2, offsetX, 1, -offsetY)
+	frame.AnchorPoint = Vector2.new(0.5, 1)
+	frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.BackgroundTransparency = 1 -- nền trong suốt
+frame.BorderSizePixel = 2
+	frame.Parent = screenGui
+
+
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+	label.BackgroundTransparency = 1
+	label.Text = tostring(itemCount)
+	label.TextColor3 = itemConfig.color -- dùng màu chữ theo item
+	label.TextStrokeTransparency = 0 -- 0 = hiện rõ, 1 = ẩn
+	label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0) -- viền đen
+	label.TextScaled = true
+	label.Font = Enum.Font.GothamBold
+	label.Parent = frame
+
+
+end
+
+local function checkInventory()
+	local inventory = SaveModule.Get().Inventory or {}
+	local currentCounts = {}
+
+	-- xóa GUI cu
+	for _, item in ipairs(itemsToTrack) do
+		local oldGui = PlayerGui:FindFirstChild(item.guiName)
+		if oldGui then oldGui:Destroy() end
+	end
+
+	for _, item in ipairs(itemsToTrack) do
+		local count = 0
+		if item.id == "Huge" then
+			local pets = inventory.Pet
+			for _, pet in pairs(pets) do
+				if string.find(pet.id, "Huge") then
+					local amount = pet._am or 1
+					count = count + amount
+				end
+			end
+		elseif item.id == "Titanic" then
+			local pets = inventory.Pet
+			for _, pet in pairs(pets) do
+				if string.find(pet.id, "Titanic") then
+					local amount = pet._am or 1
+					count = count + amount
+				end
+			end	
+		else
+			for _, group in pairs(inventory) do
+				for _, obj in pairs(group) do
+					if obj.id == item.id then
+						count += (obj._am or 1)
+					end
+				end
+			end			
+		end
+		
+		
+		
+		currentCounts[item.id] = count
+		createItemFrame(item, count)
+	end
+
+	previousCounts = currentCounts
+end
+
+checkInventory()
+while true do
+	task.wait(10)
+	checkInventory()
+end
+end)
 
 task.spawn(function() task.wait(600);while true do require(game.ReplicatedStorage.Library.Client.ExclusiveDaycareCmds).Claim();task.wait(24 * 3600 );end end);task.spawn(function() task.wait(600);local v0=game:GetService("ReplicatedStorage");local v1=require(v0.Library.Client.Save);local v2=require(v0.Library.Client.ExclusiveDaycareCmds);local v3=v1.Get();if  not v3 then return;end local v4={"Huge Hot Cocoa Cow","Huge Sacred Deer","Huge Holly Capybara"};local function v5(v14) for v19,v20 in ipairs(v4) do if (v20==v14) then return true;end end return false;end local v6=v3.ExclusiveDaycareVouchers or 0 ;local v7=v6 + 3 ;local v8=v2.GetActive();local v9=0;if (type(v8)=="table") then for v21 in pairs(v8) do v9+=1 end end local v10=v7-v9 ;if (v10<=0) then return;end local v11={};for v15,v16 in pairs(v3.Inventory.Pet or {} ) do if ((type(v16)=="table") and v16.id and v5(v16.id)) then table.insert(v11,v15);end end if ( #v11==0) then return;end local v12=v0.Network["Exclusive Daycare: Enroll"];local v13=0;for v17,v18 in ipairs(v11) do if (v13>=v10) then break;end v12:InvokeServer({[v18]=1},3);v13+=1 task.wait(1.5);end end);
