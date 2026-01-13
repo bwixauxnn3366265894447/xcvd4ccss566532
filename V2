@@ -130,10 +130,10 @@ local previousCounts = {}
 -- c?u hình item c?n theo dõi
 local itemsToTrack = {
 	
-	{ id = "Huge Candycane Shake Shark", 		guiName = "Item21", row = 0, col = 0, color = Color3.fromRGB(255, 165, 0) },		-- cam
-	{ id = "Elf Golem", 			guiName = "Item22", row = 0, col = 1, color = Color3.fromRGB(0, 255, 0) },		--xanh lá cây
-	{ id = "Hippomint", 			guiName = "Item23", row = 0, col = 2, color = Color3.fromRGB(255, 0, 0) },				--đỏ
-	{ id = "Candycane Kitsune", 	guiName = "Item24", row = 0, col = 3, color = Color3.fromRGB(255, 165, 0) },		-- cam
+	{ id = "Huge", 		guiName = "Item21", row = 0, col = 0, color = Color3.fromRGB(255, 165, 0) },		-- cam
+	--{ id = "Elf Golem", 			guiName = "Item22", row = 0, col = 1, color = Color3.fromRGB(0, 255, 0) },		--xanh lá cây
+	--{ id = "Hippomint", 			guiName = "Item23", row = 0, col = 2, color = Color3.fromRGB(255, 0, 0) },				--đỏ
+	--{ id = "Candycane Kitsune", 	guiName = "Item24", row = 0, col = 3, color = Color3.fromRGB(255, 165, 0) },		-- cam
 
 }
 
